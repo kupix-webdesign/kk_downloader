@@ -126,6 +126,16 @@
 						</TCEforms>
 					</results_at_a_time>
 
+					<showPagebrowser>
+						<TCEforms>
+							<label>LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showPagebrowser</label>
+							<config>
+								<type>check</type>
+								<default>0</default>
+							</config>
+						</TCEforms>
+					</showPagebrowser>
+
 					<imagepreview>
 						<TCEforms>
 							<label>LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.imagepreview</label>
@@ -171,6 +181,16 @@
 						</TCEforms>
 					</showCRDate>
 
+					<showEditDate>
+						<TCEforms>
+							<label>LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showEditDate</label>
+							<config>
+								<type>check</type>
+								<default>0</default>
+							</config>
+						</TCEforms>
+					</showEditDate>
+
 					<showFileMDate>
 						<TCEforms>
 							<label>LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showFileMDate</label>
@@ -195,16 +215,6 @@
 							</config>
 						</TCEforms>
 					</showFileMDate>
-
-					<showEditDate>
-						<TCEforms>
-							<label>LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showEditDate</label>
-							<config>
-								<type>check</type>
-								<default>0</default>
-							</config>
-						</TCEforms>
-					</showEditDate>
 
 					<downloads>
 						<TCEforms>
