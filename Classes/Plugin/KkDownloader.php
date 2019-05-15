@@ -167,16 +167,20 @@ class KkDownloader extends AbstractPlugin
             $download = $this->downloadRepository->getDownloadByUid($this->uidOfDownload);
             $download = $this->languageOverlay($download, 'tx_kkdownloader_images');
 
-            if ($this->settings['showCats']) {
-                $download['categories'] = $this->completeCATs($download['cat']);
+            if ( empty($download) ) {
+               $download['singleDirectlyCalled'] = true;
+            } else {
+               if ($this->settings['showCats']) {
+                   $download['categories'] = $this->completeCATs($download['cat']);
+               }
+               if ($this->settings['showImagePreview']) {
+                   $download['previewImage'] = $this->createPreviewImage($download);
+               }
+               $download['fileItems'] = $this->generateDownloadLinks(
+                   (int)$download['uid'],
+                   (int)$this->conf['linkdescription']
+               );
             }
-            if ($this->settings['showImagePreview']) {
-                $download['previewImage'] = $this->createPreviewImage($download);
-            }
-            $download['fileItems'] = $this->generateDownloadLinks(
-                (int)$download['uid'],
-                (int)$this->conf['linkdescription']
-            );
 
             $view->assign('download', $download);
         } else {
@@ -321,6 +325,7 @@ class KkDownloader extends AbstractPlugin
         $settings['orderDirection'] = trim($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'ascdesc', 'sDEF'));
         $settings['orderDirection'] = $settings['orderDirection'] ?: 'ASC';
         $settings['showFileSize'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'filesize', 'sDEF');
+        $settings['showPagebrowser'] = (bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'showPagebrowser', 'sDEF');
         $settings['showImagePreview'] = (bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'imagepreview', 'sDEF');
         $settings['showDownloadsCount'] = (bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'downloads', 'sDEF');
 
@@ -333,6 +338,23 @@ class KkDownloader extends AbstractPlugin
         $settings['showIPLastDownload'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'showIPLastDownload', 'sDEF');
         $settings['showFileMDate'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'showFileMDate', 'sDEF');
         $settings['whatToDisplay'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'what_to_display', 'sDEF');
+
+
+        $creationDateType = trim($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'showCRDate', 'sDEF'));
+//        $settings['creationDateType'] = $settings['creationDateType'] ?: $this->conf['displayCreationDate'];
+        $settings['creationDateType'] = '';
+        if ($creationDateType > 0) {
+             if ($creationDateType == '1') {
+                 $dtf = $this->conf['dateformat'];
+             } else {
+                 $dtf = $this->conf['datetimeformat'];
+             }
+             if (empty($dtf)) {
+                 $dtf = 'd.m.Y H:i';
+             }
+             $settings['creationDateType'] = $dtf;
+         }
+
 
         return $settings;
     }
@@ -399,35 +421,36 @@ class KkDownloader extends AbstractPlugin
             }
 
             // render the LINK-Part:
-            $content .= '<div class="linkOutput"><div class="dl-link">' . $fileExtIcon . '&nbsp;';
+            $content .= '<div class="linkOutput"><div class="dl-link"><div class="dl-link-text">' . $fileExtIcon . '&nbsp;';
             $content .= $this->pi_linkTP($fileDescription, $urlParameters= ['download' => $image, 'did' => $uid]);
-            $content .= '</div>';
 
-            // add the filesize block, if desired
-            if ($this->settings['showFileSize']) {
-                $downloadfile = $this->filebasepath.$image;
-                $fileSize = filesize($downloadfile);
-                $decimals = 2;
-                if ($fileSize < 1024) {
-                    $decimals = 0;
-                }
-                $formattedFileSize = $this->format_size($fileSize, $decimals);
-                $fsc = trim($this->conf['filesizeClass']);
-                if (empty($fsc)) {
-                    $filesizedivB = '<div>';
-                    $filesizedivE = '</div>';
-                } else {
-                    $filesizedivB = '<div class="'.$fsc.'">';
-                    $filesizedivE = '</div>';
-                }
-                $content .= sprintf(
-                    ' %s(%s%s)%s',
-                    $filesizedivB,
-                    LocalizationUtility::translate('filesize', 'kkDownloader'),
-                    $formattedFileSize,
-                    $filesizedivE
-                );
-            }
+               // add the filesize block, if desired
+               if ($this->settings['showFileSize']) {
+                   $downloadfile = $this->filebasepath.$image;
+                   $fileSize = filesize($downloadfile);
+                   $decimals = 2;
+                   if ($fileSize < 1024) {
+                       $decimals = 0;
+                   }
+                   $formattedFileSize = $this->format_size($fileSize, $decimals);
+                   $fsc = trim($this->conf['filesizeClass']);
+                   if (empty($fsc)) {
+                       $filesizedivB = '<div>';
+                       $filesizedivE = '</div>';
+                   } else {
+                       $filesizedivB = '<div class="'.$fsc.'">';
+                       $filesizedivE = '</div>';
+                   }
+                   $content .= sprintf(
+                       '</div> %s&nbsp;(%s%s)%s',
+                       $filesizedivB,
+                       LocalizationUtility::translate('filesize', 'kkDownloader'),
+                       $formattedFileSize,
+                       $filesizedivE
+                   );
+               }
+
+            $content .= '</div>';
 
             // add the file date+time block, if desired
             if ($this->settings['showFileMDate']) {
@@ -441,7 +464,7 @@ class KkDownloader extends AbstractPlugin
                 if (empty($dtf)) {
                     $dtf = 'd.m.Y H:i';
                 }
-                $formattedFileDate = date($dtf, $fileModificationTime);
+                $formattedFileDate = ' ' . date($dtf, $fileModificationTime);
                 $mdsc = trim($this->conf['fileMDateClass']);
                 if (empty($mdsc)) {
                     $fileMDatedivB = '<div>';
@@ -458,6 +481,7 @@ class KkDownloader extends AbstractPlugin
                     $fileMDatedivE
                 );
             }
+
             $content .= '</div>';
         }
 
