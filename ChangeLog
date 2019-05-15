@@ -1,3 +1,7 @@
+2019-05-15  Kurt Kunig <kk@kupix.de>
+  * If you want to set up an own CSS-file, you'll find one under Resources/Public/Css.
+    To cancel the given styles out of the setup.txt you can delete the CSS-items with "plugin.tx_kkdownloader_pi1._CSS_DEFAULT_STYLE >"
+
 2019-05-09  Stefan Froemken <projects@jweiland.net>
   * Extension key kk_downloader was transferred to jweiland.net
   * Update version number to 4.0.0
