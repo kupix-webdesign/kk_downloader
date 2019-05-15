@@ -43,7 +43,11 @@
 				<source>since</source>
 				<target>seit</target>
 			</trans-unit>
-			<trans-unit id="lastEdit">
+			<trans-unit id="crDate">
+				<source>Date file created</source>
+            <target>Erstell-Datum des Eintrags </target>
+			</trans-unit>
+  			<trans-unit id="lastEdit">
 				<source>This record was last edited at</source>
 				<target>Datum der letzten Veränderung</target>
 			</trans-unit>
@@ -74,6 +78,10 @@
 			<trans-unit id="noTemplate">
 				<source>No HTML-template. Neither in the flexform nor in the template-setup!?</source>
 				<target>Sie haben weder in der Flexform noch im Setup eine HTML-Schablone zugewiesen!?</target>
+			</trans-unit>
+			<trans-unit id="singleDirectCall">
+            <source>Direct call of the single page without an item ID!?</source>
+				<target>Die Single-Seite wurde direkt aufgerufen ohne Übergabe einer ID!?</target>
 			</trans-unit>
 			<trans-unit id="since">
 				<source>since</source>

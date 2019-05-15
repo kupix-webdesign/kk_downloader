@@ -42,6 +42,9 @@
 			<trans-unit id="fileSize">
 				<source>Size of download-file</source>
 			</trans-unit>
+			<trans-unit id="crDate">
+				<source>Date file created</source>
+			</trans-unit>
 			<trans-unit id="fileMDate">
 				<source>File date last changed</source>
 			</trans-unit>
@@ -56,6 +59,9 @@
 			</trans-unit>
 			<trans-unit id="noTemplate">
 				<source>No HTML-template. Neither in the flexform nor in the template-setup!?</source>
+			</trans-unit>
+			<trans-unit id="singleDirectCall">
+				<source>Direct call of the single page without an item ID!?</source>
 			</trans-unit>
 			<trans-unit id="since">
 				<source>since</source>

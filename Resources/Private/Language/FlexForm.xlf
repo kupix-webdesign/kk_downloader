@@ -12,8 +12,11 @@
 			<trans-unit id="tx_kkdownloader.results_at_a_time">
 				<source>No of items to show in one view before browsing</source>
 			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showPagebrowser">
+				<source>Show pagebrowser</source>
+			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCRDate">
-				<source>Show creation date/time</source>
+				<source>Show creation date/time of the download item</source>
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showEditDate">
 				<source>Show T3-object last edit date</source>
@@ -44,6 +47,9 @@
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader_cat_all">
 				<source>All categories</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader_cat.cat">
+				<source>Select categories</source>
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader.layout">
 				<source>Layout</source>
