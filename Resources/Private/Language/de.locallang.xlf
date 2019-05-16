@@ -115,6 +115,14 @@
 				<source>Sorry, no items were found.</source>
 				<target>Es wurden keine Einträge gefunden</target>
 			</trans-unit>
+			<trans-unit id="error.callSingleViewWithoutUid.title">
+				<source>No download UID found</source>
+				<target>Keine Download UID gefunden</target>
+			</trans-unit>
+			<trans-unit id="error.callSingleViewWithoutUid.description">
+				<source>Direct call of the single page without an item ID!?</source>
+				<target>Die Single-Seite wurde direkt aufgerufen ohne Übergabe einer ID!?</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

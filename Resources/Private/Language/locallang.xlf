@@ -87,6 +87,12 @@
 			<trans-unit id="pi_list_browseresults_noResults">
 				<source>Sorry, no items were found.</source>
 			</trans-unit>
+			<trans-unit id="error.callSingleViewWithoutUid.title">
+				<source>No download UID found</source>
+			</trans-unit>
+			<trans-unit id="error.callSingleViewWithoutUid.description">
+				<source>Direct call of the single page without an item ID!?</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

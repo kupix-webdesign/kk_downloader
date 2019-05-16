@@ -19,6 +19,8 @@ use JWeiland\KkDownloader\Domain\Repository\DownloadRepository;
 use JWeiland\KkDownloader\Domain\Repository\LanguageRepository;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Service\MarkerBasedTemplateService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -164,8 +166,9 @@ class KkDownloader extends AbstractPlugin
         $view = $this->getView();
         $view->setTemplatePathAndFilename($templateFile);
         if ($this->settings['whatToDisplay'] === 'SINGLE') {
-            $download = $this->downloadRepository->getDownloadByUid($this->uidOfDownload);
-            $download = $this->languageOverlay($download, 'tx_kkdownloader_images');
+            if (!empty($this->uidOfDownload)) {
+                $download = $this->downloadRepository->getDownloadByUid($this->uidOfDownload);
+                $download = $this->languageOverlay($download, 'tx_kkdownloader_images');
 
             if ( empty($download) ) {
                $download['singleDirectlyCalled'] = true;
@@ -182,7 +185,14 @@ class KkDownloader extends AbstractPlugin
                );
             }
 
-            $view->assign('download', $download);
+                $view->assign('download', $download);
+            } else {
+                $this->addFlashMessage(
+                    LocalizationUtility::translate('error.callSingleViewWithoutUid.description', 'kkDownloader'),
+                    LocalizationUtility::translate('error.callSingleViewWithoutUid.title', 'kkDownloader'),
+                    FlashMessage::ERROR
+                );
+            }
         } else {
             $storageFoldersForDownloads = $this->cObj->data['pages'];
             if (!$storageFoldersForDownloads) {
@@ -670,7 +680,10 @@ class KkDownloader extends AbstractPlugin
         $view = GeneralUtility::makeInstance(StandaloneView::class);
 
         try {
+            // needed for f:translate
             $view->getRequest()->setControllerExtensionName('kkDownloader');
+            // needed as identifier part for FlashMessageService
+            $view->getRequest()->setPluginName('Pi1');
         } catch (InvalidExtensionNameException $e) {
         }
 
@@ -695,6 +708,35 @@ class KkDownloader extends AbstractPlugin
             $this->languageUid,
             (string)$this->languageOverlayMode
         );
+    }
+
+    /**
+     * Creates a Message object and adds it to the FlashMessageQueue.
+     *
+     * @param string $messageBody The message
+     * @param string $messageTitle Optional message title
+     * @param int $severity Optional severity, must be one of \TYPO3\CMS\Core\Messaging\FlashMessage constants
+     * @param bool $storeInSession Optional, defines whether the message should be stored in the session (default) or not
+     * @throws \InvalidArgumentException if the message body is no string
+     * @see \TYPO3\CMS\Core\Messaging\FlashMessage
+     */
+    public function addFlashMessage($messageBody, $messageTitle = '', $severity = \TYPO3\CMS\Core\Messaging\AbstractMessage::OK, $storeInSession = true)
+    {
+        if (!is_string($messageBody)) {
+            throw new \InvalidArgumentException('The message body must be of type string, "' . gettype($messageBody) . '" given.', 1243258395);
+        }
+        /* @var \TYPO3\CMS\Core\Messaging\FlashMessage $flashMessage */
+        $flashMessage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            \TYPO3\CMS\Core\Messaging\FlashMessage::class,
+            (string)$messageBody,
+            (string)$messageTitle,
+            $severity,
+            $storeInSession
+        );
+
+        $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
+        $flashMessageQueue = $flashMessageService->getMessageQueueByIdentifier('extbase.flashmessages.tx_kkdownloader_pi1');
+        $flashMessageQueue->enqueue($flashMessage);
     }
 
     /**

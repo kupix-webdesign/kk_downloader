@@ -23,22 +23,6 @@
 				<source>Show creation date/time of the download item</source>
 				<target>Datum/Zeit der Erstellung des Eintrags anzeigen</target>
 			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showEditDate">
-				<source>Show T3-object last edit date</source>
-				<target>Änderungsdatum des Eintrags anzeigen</target>
-			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showFileMDate">
-				<source>Show file last edit date</source>
-				<target>Änderungsdatum der Datei anzeigen</target>
-			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showDateLastDownload">
-				<source>Show date of last download</source>
-				<target>Datum des letzten Downloads anzeigen</target>
-			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showIPLastDownload">
-				<source>Show IP-address of last download</source>
-				<target>IP-Adresse des letzten Downloads anzeigen</target>
-			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCRDate.nodate">
 				<source>No date/time</source>
 				<target>Keine Anzeige</target>
@@ -51,9 +35,41 @@
 				<source>Date and Time</source>
 				<target>Datum und Zeit</target>
 			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate">
+				<source>Show file last edit date</source>
+				<target>Änderungsdatum der Datei anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate.nodate">
+				<source>No date/time</source>
+				<target>Keine Anzeige</target>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate.date">
+				<source>Only date</source>
+				<target>Nur Datum</target>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate.datetime">
+				<source>Date and Time</source>
+				<target>Datum und Zeit</target>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showEditDate">
+				<source>Show T3-object last edit date</source>
+				<target>Änderungsdatum des Eintrags anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showDateLastDownload">
+				<source>Show date of last download</source>
+				<target>Datum des letzten Downloads anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showIPLastDownload">
+				<source>Show IP-address of last download</source>
+				<target>IP-Adresse des letzten Downloads anzeigen</target>
+			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCats">
 				<source>Show Categories</source>
 				<target>Kategorien anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.selectCategory">
+				<source>Select a category</source>
+				<target>Wähle eine Kategorie aus</target>
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader_conf">
 				<source>Settings</source>
