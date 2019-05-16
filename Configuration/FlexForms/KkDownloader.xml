@@ -36,7 +36,7 @@
 
 					<dynField>
 						<TCEforms>
-							<label>LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader_cat.cat</label>
+							<label>LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.selectCategory</label>
 							<config>
 								<type>select</type>
 								<itemsProcFunc>JWeiland\KkDownloader\UserFunc\AddFieldsToFlexForm->addFields</itemsProcFunc>
