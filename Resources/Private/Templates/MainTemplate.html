@@ -1,4 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:flashMessages />
+
 	<f:if condition="{settings.whatToDisplay}=='SINGLE'">
 		<f:then>
 			<f:render section="renderSingleView" arguments="{_all}" />
@@ -9,41 +11,43 @@
 	</f:if>
 
 	<f:section name="renderSingleView">
-		<div class="kkdl_single">
-			<h2 class="title">{download.title}</h2>
+		<f:if condition="{download}">
+			<div class="kkdl_single">
+				<h2 class="title">{download.title}</h2>
 
-			<f:if condition="{download.categories}">
-				<div class="category_class">{download.categories}</div>
-			</f:if>
+				<f:if condition="{download.categories}">
+					<div class="category_class">{download.categories}</div>
+				</f:if>
 
-			<div class="kkdl_text">
-				<div class="links">{download.fileItems->f:format.raw()}</div>
-				<p class="bodytext">
-					<b>
-						{f:translate(key: 'shortDescription')}:<br />
-						{download.description -> f:format.crop(maxCharacters: 10000, respectWordBoundaries: 1)->f:format.nl2br()}
-					</b>
-					<br />{download.longdescription->f:format.html()}
-				</p>
-			</div>
-
-			<f:if condition="{settings.showImagePreview}">
-				<div class="kkdl_image">{download.previewImage->f:format.raw()}</div>
-			</f:if>
-
-			<div style="clear: both"></div>
-
-			<f:if condition="{settings.showDownloadsCount}">
-				<div class="clicks">
-					{download.clicks} {f:translate(key: 'clicks')}
-					<span class="datetime">{f:translate(key: 'date')} {download.crdate->f:format.date(format: 'd.m.Y')}</span>
+				<div class="kkdl_text">
+					<div class="links">{download.fileItems->f:format.raw()}</div>
+					<p class="bodytext">
+						<b>
+							{f:translate(key: 'shortDescription')}:<br />
+							{download.description -> f:format.crop(maxCharacters: 10000, respectWordBoundaries: 1)->f:format.nl2br()}
+						</b>
+						<br />{download.longdescription->f:format.html()}
+					</p>
 				</div>
-			</f:if>
 
-			<f:render section="renderLastDownload" arguments="{download: download}" />
-			<f:render section="renderIpLastDownload" arguments="{download: download}" />
-			<f:render section="renderEditDate" arguments="{download: download}" />
-		</div>
+				<f:if condition="{settings.showImagePreview}">
+					<div class="kkdl_image">{download.previewImage->f:format.raw()}</div>
+				</f:if>
+
+				<div style="clear: both"></div>
+
+				<f:if condition="{settings.showDownloadsCount}">
+					<div class="clicks">
+						{download.clicks} {f:translate(key: 'clicks')}
+						<span class="datetime">{f:translate(key: 'date')} {download.crdate->f:format.date(format: 'd.m.Y')}</span>
+					</div>
+				</f:if>
+
+				<f:render section="renderLastDownload" arguments="{download: download}" />
+				<f:render section="renderIpLastDownload" arguments="{download: download}" />
+				<f:render section="renderEditDate" arguments="{download: download}" />
+			</div>
+		</f:if>
 	</f:section>
 
 	<f:section name="renderListView">
