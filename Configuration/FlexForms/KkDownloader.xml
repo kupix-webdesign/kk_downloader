@@ -188,15 +188,15 @@
 								<type>select</type>
 								<items type="array">
 									<numIndex index="1" type="array">
-										<numIndex index="0">LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showCRDate.nodate</numIndex>
+										<numIndex index="0">LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showFileMDate.nodate</numIndex>
 										<numIndex index="1">0</numIndex>
 									</numIndex>
 									<numIndex index="2" type="array">
-										<numIndex index="0">LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showCRDate.date</numIndex>
+										<numIndex index="0">LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showFileMDate.date</numIndex>
 										<numIndex index="1">1</numIndex>
 									</numIndex>
 									<numIndex index="3" type="array">
-										<numIndex index="0">LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showCRDate.datetime</numIndex>
+										<numIndex index="0">LLL:EXT:kk_downloader/Resources/Private/Language/FlexForm.xlf:tx_kkdownloader.showFileMDate.datetime</numIndex>
 										<numIndex index="1">2</numIndex>
 									</numIndex>
 								</items>

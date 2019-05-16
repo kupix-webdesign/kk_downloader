@@ -16,19 +16,7 @@
 				<source>Show pagebrowser</source>
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCRDate">
-				<source>Show creation date/time</source>
-			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showEditDate">
-				<source>Show T3-object last edit date</source>
-			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showFileMDate">
-				<source>Show file last edit date</source>
-			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showDateLastDownload">
-				<source>Show date of last download</source>
-			</trans-unit>
-			<trans-unit id="tx_kkdownloader.showIPLastDownload">
-				<source>Show IP-address of last download</source>
+				<source>Show creation date/time of the download item</source>
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCRDate.nodate">
 				<source>No date/time</source>
@@ -38,6 +26,27 @@
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCRDate.datetime">
 				<source>Date and Time</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate">
+				<source>Show file last edit date</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate.nodate">
+				<source>No date/time</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate.date">
+				<source>Only date</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showFileMDate.datetime">
+				<source>Date and Time</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showEditDate">
+				<source>Show T3-object last edit date</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showDateLastDownload">
+				<source>Show date of last download</source>
+			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showIPLastDownload">
+				<source>Show IP-address of last download</source>
 			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCats">
 				<source>Show Categories</source>
