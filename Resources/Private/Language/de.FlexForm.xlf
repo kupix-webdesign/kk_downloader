@@ -15,6 +15,10 @@
 				<source>No of items to show in one view before browsing</source>
 				<target>Maximale Anzahl Downloads auf einer Seite (bevor man blättern muss)</target>
 			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showPagebrowser">
+				<source>Show pagebrowser</source>
+				<target>Seiten-Browser anzeigen</target>
+			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCRDate">
 				<source>Show creation date/time</source>
 				<target>Datum/Zeit der Erstellung anzeigen</target>

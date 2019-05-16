@@ -12,6 +12,9 @@
 			<trans-unit id="tx_kkdownloader.results_at_a_time">
 				<source>No of items to show in one view before browsing</source>
 			</trans-unit>
+			<trans-unit id="tx_kkdownloader.showPagebrowser">
+				<source>Show pagebrowser</source>
+			</trans-unit>
 			<trans-unit id="tx_kkdownloader.showCRDate">
 				<source>Show creation date/time</source>
 			</trans-unit>

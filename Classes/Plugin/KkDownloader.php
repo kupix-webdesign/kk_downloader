@@ -321,6 +321,7 @@ class KkDownloader extends AbstractPlugin
         $settings['orderDirection'] = trim($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'ascdesc', 'sDEF'));
         $settings['orderDirection'] = $settings['orderDirection'] ?: 'ASC';
         $settings['showFileSize'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'filesize', 'sDEF');
+        $settings['showPagebrowser'] = (bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'showPagebrowser', 'sDEF');
         $settings['showImagePreview'] = (bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'imagepreview', 'sDEF');
         $settings['showDownloadsCount'] = (bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'downloads', 'sDEF');
 
