@@ -121,10 +121,10 @@
 <f:comment> <!-- I N T E R N A L   S E C T I O N S --> </f:comment>
 
 <f:section name="renderLastDownload">
-	<f:if condition="{download.last_download}">
+	<f:if condition="{download.last_downloaded}">
 		<div class="datetime">
-			{f:translate(key: 'lastDownload')}
-			{download.last_download->f:format.date(format: 'd.m.Y H:i')}
+			{f:translate(key: 'lastDownload')}:&nbsp;
+			{download.last_downloaded->f:format.date(format: 'd.m.Y H:i')}
 		</div>
 	</f:if>
 </f:section>
