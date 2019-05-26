@@ -108,7 +108,7 @@ return [
             'config' => [
                 'type' => 'group',
                 'internal_type' => 'file',
-                'allowed' => 'jpg,gif,png',
+                'allowed' => 'jpg,jpeg,gif,png,pdf',
                 'max_size' => 10000,
                 'uploadfolder' => 'uploads/tx_kkdownloader',
                 'show_thumbs' => 1,
